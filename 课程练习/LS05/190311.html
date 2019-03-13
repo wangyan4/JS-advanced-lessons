@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var a = 45;
+    if (45 == a) { //判等反写为了避免少写等号引起错误，字面值写在前面少写等号会报错
+        console.log("true");
+    }
+    //+ 字符串连接  true + true = 2
+    //- 数值运算 '5' - 3 = 2
+    //++ -- 会有隐式类型转换
+
+
+    var e = !23;
+    var f = !!34; //!!"" false  !!0 false  !!"abc" true !!undefined false !!null false
+    var g = !!{};
+    console.log(e, f, g); //false true true
+
+    //逻辑运算 && || 短路原则 与后或前
+
+    var score = 76;
+    if (score > 90) {
+        console.log("优");
+    } else if (score > 75) {
+        console.log("良");
+    } else if (score > 60) {
+        console.log("及格");
+    } else {
+        console.log("不及格");
+    }
+    //通过&&和||的组合实现如上功能
+    console.log((score > 90 && "优") || (score > 75 && "良") || (score > 60 && "及格") || "不及格");
+
+
+    //  ES5 实现默认值
+    function sum(x,y,z){
+        console.log(x,y,z);
+        x = x || 4;
+        y = y || 5;
+        z = z || 6;
+        console.log(x,y,z);
+        return (x+y+z);
+    }
+    sum(undefined,undefined,undefined);
+    //ES6实现默认值
+    function sum1(x,y = 2,z = 3){
+        console.log(x + y + z);
+        return x + y + z;
+    }
+    sum1(1);
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+	var username = "zhangsan";
+	var age = 10;
+
+	function setName(username) {
+		this.username = username;
+	}
+
+	function setAge(age) {
+		this.age = age;
+	}
+
+	function setInfor(username, age) {
+		setName(username);
+		setAge(age);
+	}
+	setInfor("lisi", 15);
+	var str = '';
+	if (str) {
+		console.log(1);
+	} else {
+		console.log(2);
+	}
+
+	console.log(a); //undifine
+	if (true) {
+		var a = 2;
+	}
+	console.log(a); //2
+
+
+	function f1() {
+		console.log(arguments);//arguments对象类数组对象，存放所传的参数
+		var argArr = Array.prototype.slice.call(arguments);
+		console.log(argArr);//（2，，,,4，'a'）
+	}
+	f1(2, 3, 4, "a");
+
+	function f2(a, b, c, d) {
+		console.log(a, b, c, d);
+	}
+	f2(2, 3);
+</script>
+
+</html>
