@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    //1.非严格模式下 this指向window
+    //2.严格模式下 this指向undefined
+    //3 this指向函数调用的主体对象
+    function test1() {
+        console.log(this == widow);
+    }
+
+    function test2() {
+        'use strict';
+        return this == window ? false : true;
+    }
+
+    var point = {
+        x: 0,
+        y: 0,
+        moveTo: function (x, y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    point.moveTo(10, 10);
+
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+        this.moveTo = function (x, y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+    var p = new Point(10, 10);
+
+
+    //方法A.call(对象) 方法切换方法A的调用主体
+    //方法.call(对象,arg1,arg2,arg3,...)
+    //方法B.apply(对象,[arg1,arg2,arg3,...]);(参数变为数组)
+    //call实例1
+    objA = {
+        name: "AA",
+        x: 1
+    };
+    objB = {
+        name: "BB",
+        x: 5
+    };
+    objA.test = function () {
+        console.log(this.name, this.x);
+    };
+
+
+    objA.test(); //AA 1
+    objA.test.call(objB); //BB 5
+
+
+    //call实例2 方法.call(对象,arg1,arg2,arg3,...)
+    var bird = {
+        name: "polly",
+        fly: function (m, n) {
+            console.log("i'm:" + this.name + " i can fly ___", m, n);
+        }
+    };
+
+    var me = {
+        name: "QL"
+    };
+    bird.fly(5, 6);
+    bird.fly.call(me, 7, 8);
+
+
+    //嵌套函数
+    //内部函数this指向window对象
+    //软绑定解决缺陷
+    var point0 = {
+        x: 0,
+        y: 0,
+        moveTo: function (x, y) {
+            var that = this; //实现软绑定,this无法穿透嵌套函数
+            function moveToX(x) {
+                console.log(that);
+                that.x = x;
+            };
+
+            function moveToY(y) {
+                console.log(that);
+                that.y = y;
+            }
+            moveToX(x);
+            moveToY(y);
+        }
+    };
+    point0.moveTo(10, 10);
+    console.log(point0);
+
+    //call方法解决缺陷
+    var point0 = {
+        x: 0,
+        y: 0,
+        moveTo: function (x, y) {
+            function moveToX(x) {
+                console.log(this);
+                this.x = x;
+            };
+
+            function moveToY(x) {
+                this.y = y;
+            }
+            moveToX.call(this, x);
+            moveToY.call(this, y);
+        }
+    };
+    point0.moveTo(10, 10);
+    console.log(point0);
+
+    //通过bind方法解决缺陷(硬绑定)
+    //bind 方法生成了新函数,不会立即执行,需要调用执行
+    var point0 = {
+        x: 0,
+        y: 0,
+        moveTo: function (x, y) {
+            function moveToX() {
+                console.log(this);
+                this.x = x;
+            };
+
+            function moveToY() {
+                this.y = y;
+            }
+            moveToX.bind(this)();
+            moveToY.bind(this)();
+        }
+    };
+    point0.moveTo(10, 10);
+    console.log(point0);
+</script>
+
+</html>

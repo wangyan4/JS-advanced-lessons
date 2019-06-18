@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function createIterator(arr){
+        var i = 0;
+        return {
+            next:function (){
+                return i<arr.length?{value:arr[i++],done:true}:{value:undefined,done:false};
+            }
+        }
+    }
+    var interator = createIterator([1,2,3]);
+    console.log(interator.next());
+    console.log(interator.next());
+    console.log(interator.next());
+    console.log(interator.next());
+
+
+    let arr2 = [1,2,3];
+    let person = {
+        name:"zhangsan",
+        age:20
+    }
+    console.log(arr2[Symbol.iterator]);
+</script>
+<script>
+    function* helloGenerator(){
+        yield 1;
+        yield " hello world ";
+        return "ending";
+    }
+    var generator = helloGenerator();
+    console.log(generator.next());
+    console.log(generator.next());
+    console.log(generator.next());
+
+
+    let obj = {};
+    obj[Symbol.iterator] = function*(){
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+    console.log(...obj);
+</script>
+<script>
+    new Promise(function(resolve,reject){
+        setTimeout(function(){
+            console.log("时间到");
+            resolve("hello world");
+        },3000);
+    }).then(function(val){
+        console.log("resolve被调用",val);
+    },function(){
+
+    }).catch(function(){
+
+    }).done(function(){
+        
+    }).finally(function(){
+
+    })
+</script>
+</html>

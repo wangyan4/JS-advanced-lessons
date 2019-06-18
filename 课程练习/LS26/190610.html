@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let s1 = Symbol("s1");
+    let s2 = Symbol("s2");
+    let s3 = Symbol("s1");
+    console.log(s1==s3);
+    // Symbol.for("foo") 首先查看是否存在该描述的Symbol变量,存在直接获取,不存在则创建
+    let s4 = Symbol("s4");
+    let s5 = Symbol.for("s5");
+    console.log(Symbol.keyFor(s4),Symbol.keyFor(s5));
+    console.log(Symbol.for("s1")==Symbol.for("s1"));
+
+    // symbol 作为对象属性名不会被覆盖
+    // for in 和for of遍历获取不到
+    // Object.getOwnPropertySymbols(obj)获取symbol对象
+    let obj = {};
+    obj[s1] = "hello";
+    let obj1 = {
+        [s1]:"world"
+    }
+    console.log(obj[s1],obj1[s1]);
+
+
+    // 数组
+    let arr = new Set([1,2,3,4,5,1,2,3,4,5,2,8]);
+    console.log(arr);
+    for (let item of arr) {
+        console.log(item);
+    }
+
+    let m1 = new Map([
+        ["username","zhangsan"],
+        ["age",20]
+    ])
+    console.log(m1.size,m1.keys());
+    for(let i of m1){
+        console.log(i);
+    }
+    for(let i of m1.keys()){
+        console.log(i);
+    }
+    console.log(m1.set("weight","60kg"));
+    console.log(m1.get("username"));
+    console.log(m1.delete("username"));
+    console.log(m1.has("username"));
+
+
+
+    class Point{
+        constructor(x,y){
+            this.x=x;
+            this.y=y;
+        }
+        show(){
+            console.log(this.x,this.y);
+        }
+        // 静态方法通过类直接调用
+        static showPointX(){
+            console.log(this);
+        }
+
+    }
+    let p1 = new Point(1,1);
+    p1.show();
+    Point.showPointX();
+    class MyPoint extends Point{
+        constructor(...args,color){
+            super(...args);
+            this.color = color;
+        }
+        f(){
+            super.show();
+        }
+    }
+</script>
+</html>

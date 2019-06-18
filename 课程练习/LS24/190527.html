@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>软件学院</h1>
+    <h2>软件学院</h2>
+    <h3>软件学院</h3>
+    <h4>软件学院</h4>
+    <h5>软件学院</h5>
+    <button id="btn">jquery ajax</button>
+</body>
+<script>
+    console.log("start");
+    window.onload = function () {
+        console.log("loaded");
+    }
+    document.onclick = function () {
+        console.log("clicked");
+    }
+    console.log("end");
+</script>
+<script src="./jquery-3.3.1/jquery-3.3.1.js"></script>
+<!-- <script>
+    // jquery ajax请求从服务器获取数据
+    //ajax 实现页面局部刷新
+    $.get("./server.php", function (res){
+        console.log(res);
+        $("body").html(res);
+    });
+    $("#btn").click(
+        function(){
+            $.ajax({
+                url:"./server.php",
+                type:"get",
+                success:function(data){
+                    console.log(data);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            }
+            )
+        }
+    )
+</script> -->
+<script>
+    let username = 'zs';
+    if(true){
+        let username = 'ls';
+        console.log(username);
+    }
+    console.log(username);
+
+
+    for (let index = 0; index < 5; index++) {
+        setTimeout(function(){
+            console.log(new Date(),index+1);
+        },index*1000)        
+    }
+</script>
+</html>

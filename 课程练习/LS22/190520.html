@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery DOM操作</title>
+    <style>
+        .imgBorder {
+            outline: 2px solid red;
+        }
+
+        .filt {
+            filter: blur(2px);
+        }
+
+        .wrap {
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td>
+                <input type="text" name="username" id="username">
+                <span class="error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td>
+                <input type="password" name="pwd" id="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="登录">
+            </td>
+        </tr>
+    </table>
+
+    <img src="../CSS3/imgs/xie.jpg" alt="" id="img1" class="filt" width="200px" height="200px">
+    <button id="btn">改变属性</button>
+    <button id="btn2">改变class</button>
+
+
+    <div class="wrap"></div>
+    <button class="btn3">向上</button>
+    <button class="btn4">向下</button>
+    <button class="btn5">渐显</button>
+    <button class="btn6">渐隐</button>
+    <button class="btn7">渐隐渐显</button>
+</body>
+<script src="./jquery-3.3.1/jquery-3.3.1.js"></script>
+<script>
+    $("#username").blur(
+        function () {
+            var inputVal = $(this).val();
+            if (inputVal == '') {
+                $(".error").html("用户名不能为空");
+                $(".error").css({
+                    color: "red",
+                    background: "black",
+                    font: "italic bold 16px/20px 'Microsoft YaHei'"
+                });
+            } else {
+                $(".error").html("");
+            }
+        }
+    )
+</script>
+<script>
+    $("#btn").click(function () {
+        $("#img1").attr({
+            src: "../CSS3/imgs/you.jpg",
+            title: "这是一张图片"
+        });
+        console.log($("#img1").attr("src"));
+        $("#img1").removeAttr("title");
+    })
+    $("#btn2").click(function () {
+
+    })
+    $("#img1").mouseover(function () {
+        $("#img1").addClass("imgBorder");
+        $("#img1").removeClass("filt");
+    })
+    $("#img1").mouseout(function () {
+        $("#img1").removeClass("imgBorder");
+        $("#img1").addClass("filt");
+    })
+</script>
+<script>
+    $(".btn3").click(function(){
+        $(".wrap").slideUp(1000);
+    })
+    $(".btn4").click(function(){
+        $(".wrap").slideDown(1000);
+    })
+    $(".btn5").click(function(){
+        $(".wrap").fadeIn(1000);
+    })
+    $(".btn6").click(function(){
+        $(".wrap").fadeOut(1000);
+    })
+    $(".btn7").click(function(){
+        $(".wrap").fadeToggle(1000);
+    })
+</script>
+
+</html>

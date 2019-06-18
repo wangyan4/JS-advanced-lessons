@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            background-color: #fff;
+        }
+        .wrap div{
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+        .sub{
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+    <table width="400" height="400" border="1">
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="even">
+            <td></td>
+            <td id="slider"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <input type="text">
+    <input type="file">
+    <input type="submit">
+    <input type="checkbox">
+
+
+    <input type="button" value="绑定点击事件" id="btn1">
+    <input type="button" value="绑定点击事件" id="btn2">
+    <input type="button" value="绑定点击事件" id="btn3">
+    <img src="../CSS3/imgs/xie.jpg" alt=""/>
+
+    <div class="wrap">
+        <div class="b1">层一</div>
+        <div class="b2">层二</div>
+        <div class="b3">层三</div>
+    </div>
+    <div class="sub">
+        用户名:<input type="text" id="username"><br>
+        密码:<input type="password">
+        <!-- <input type="" value="登录"> -->
+        <input type="submit">
+    </div>
+</body>
+<script src="./jquery-3.3.1/jquery-3.3.1.js"></script>
+<script>
+    $("td:first").css("background","red");
+    $("td:last").css("background","green");
+    $("td:even").css("background","yellow");
+    $("td:odd").css("background","blue");
+
+    //eq(index) 当前索引
+    //gt(index) 索引大于index的所有元素
+    //lt(index) 索引小于index的所有元素
+    $("td:eq(4)").css("background","purple");
+    $("td:gt(1)").css("background","skyblue");
+    $("td:lt(5)").css("background","magenta");
+    $("td:not(#slider)").css("background","orange");
+
+    //表单元素 :type值
+    $(":submit").css({"border":"1px solid red"});
+
+    //绑定事件(事件方法)
+    //JQuery包装集.事件方法(回调函数)
+    $("input:button").click(
+        function(){
+            alert("我被点了!");
+        }
+    );
+
+    $("img").css({"display":"block","width":"100px","height":"100px"});
+    $("img").mouseover(function(){
+        $(this).css({"outline":"3px dashed red"});
+    })
+    $("img").mouseout(function(){
+        $(this).css({"outline":"0"});
+    })
+</script>
+<script>
+    $(".wrap div").mouseover(function(){
+        $(this).css({"background-color":"red"})
+    }).mouseout(function(){
+        $(this).css({"background-color":"#ddd"})
+    });
+</script>
+<script>
+    $("#username").blur(function(){
+        var val = $(this).val();
+        var errorText = $("<span class='error'>用户名不能为空</span>")
+        $(".error").remove();
+        if(val == ""){
+            $(this).parent().append(errorText);
+            // errorText.appendTo($(this).parent());
+        }else{
+            $(".error").remove();
+        }
+    });
+    //after  insertAfter 向特定元素后面插入节点  
+    //before insertBefore 向特定元素前面插入新的节点
+    //append appendTo 向特定元素标签内部最后添加新的节点
+    //prepend perpendTo 向特定元素标签内部最前面添加新的节点
+</script>
+</html>

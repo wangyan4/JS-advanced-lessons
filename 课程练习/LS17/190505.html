@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<!-- <script>
+    var array1 = ['a', 'b', 'c'];
+    /* 
+        foreach(callback,thisArg);
+        callback(element,index,arr)
+            element遍历数组每次取到的元素值
+            index遍历数组每次取到元素的索引
+            arr当前操作的数组
+        thisArg可以指明回调函数内部的this指向
+    */
+    array1.forEach(function (element, index, arr2) {
+        console.log(element, index, arr2);
+        window.x = 10;
+    }, window);
+
+
+
+    var arr3 = [10, 20, 30, 40];
+    var result3 = arr3.every(function (value) {
+        return value > 25;
+    });
+    console.log(result3);
+
+
+
+    var arr4 = [10, 20, 30, 40];
+    var result4 = arr4.some(function (value) {
+        return value > 25;
+    });
+    console.log(result4);
+
+
+    var arr5 = [10, 20, 30, 40];
+    var result5 = arr5.map(function (value) {
+        return value * 2;
+    });
+    console.log(result5);
+
+
+    var arr6 = [10, 20, 30, 40];
+    var result6 = arr5.filter(function (value) {
+        return value > 30;
+    });
+    console.log(result6);
+
+
+    //日期
+    var date1 = new Date();
+
+    var year = date1.getFullYear();
+    var month = date1.getMonth();
+    var day = date1.getDay();
+    var date2 = new Date(year, month);
+    console.log(date2);
+
+    var date3 = new Date("2019-05-05");
+    console.log(date3);
+
+    var date4 = new Date(Date.now());
+    console.log(date4);
+
+
+    var seconds = Date.parse("2019-05-05");
+    console.log(seconds);
+    var date1 = new Date(seconds);
+    console.log(date1);
+
+
+
+    //日期格式实例
+    // YYYY-MM-DDTHH:mm:ss.sssZ
+    console.log(Date.parse("2010-01-01 11:12:23.111"));
+    console.log(new Date("2010-01-01 11:12:23.111"));
+    console.log(new Date().toISOString());
+
+    console.log(Date.parse("2010-01-01T11:12:23.111Z"));
+    console.log(new Date("2010-01-01T11:12:23.111Z"));
+    console.log(new Date().toISOString());
+
+    //日期格式（无时间）
+    console.log(new Date("2001"));
+    console.log(new Date("2001-02"));
+    console.log(new Date("2001-02-22"));
+
+    //日期和时间格式
+    console.log(new Date("1999-11-22T13:17"));
+    console.log(new Date("1999-11-22T13:17:11"));
+    console.log(new Date("1999-11-22T13:17:11.111"));
+    console.log(new Date("1999-11-22T13:17:11.111Z"));
+
+    //时间的比较和运算，内部转换为数字进行比较和运算（从1970年1月1日00:00:00开始计算）
+    console.log(new Date("1970-01-01").getTime());
+    console.log(new Date("1970-01-02").getTime());
+    console.log(new Date("1960-01-02").getTime());
+    console.log(new Date("1970-01-02") > new Date("1970-01-01"));
+    console.log(new Date("1970-01-02") - new Date("1970-01-01"));
+    console.log(new Date((new Date("1970-01-01").getTime()) + 86400000));
+</script> -->
+<script>
+    //正则表达式
+    var reg1 = /[bcf]at/gi;
+
+    var reg2 = new RegExp(/[bcf]at/,'gi');
+    var reg3 = new RegExp("[bcf]at",'gi');
+    console.log("a fAt bat ,a faT cat".match(reg1));
+    console.log("a fAt bat ,a faT cat".match(reg2));
+    console.log("a fAt bat ,a faT cat".match(reg3));
+
+
+</script>
+
+</html>

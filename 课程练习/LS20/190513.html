@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+    <table width="400" height="400" border = "1" >
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="even">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr  class="odd">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <img src="../CSS3/imgs/xie.jpg" alt="">
+</body>
+<script>
+    //JSON
+    // JSON 对象和js对象可以相互转换并且js对象可以很容易的渲染到页面中
+    //所以可以将从后台获取到的json数据转化为js对象并渲染到页面
+    var jsObject = {
+        "uername":"zhangsan",
+        "age":14
+    }
+    var ulObject = document.querySelector("#list");
+    for(var i in jsObject){
+        var liNode = document.createElement('li');
+        liNode.innerHTML = i+ " "+ jsObject[i];
+        ulObject.appendChild(liNode);
+    }
+
+    /*
+        JSON.stringify(jsObject);可以将js对象转化为字符串
+        JSON.parse(jsonStr);可以将json字符串转化为对象
+    */
+    var jsObject1 = {
+        "username":"lisi",
+        "age":15,
+        "address":{
+            "add":"shijaizhuang",
+            "addcode":"12306"
+        }
+    }
+    var jsonStr = JSON.stringify(jsObject1,function(k,v){
+        if(typeof v == "number"){
+            return v*2;
+        }
+        return v;
+    });
+    var jsStr = JSON.parse(jsonStr,function(k,v){
+        console.log(k,v);
+        return v;
+    });
+    console.log(jsonStr);
+    console.log(jsStr);
+
+
+
+</script>
+<script>
+    //$("body").css("background","red");
+    $(".even").css("background","blue");
+</script>
+</html>

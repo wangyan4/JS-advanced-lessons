@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<!-- <script>
+    /* var tmp = 100; //注意：词法作用域,形成的闭包是否包含此行的变量tmp？
+    function foo(x) {
+        //var tmp = 3; //注意：词法作用域，思考：若屏蔽此行，会输出什么？foo之外的tmp是否为闭包的一部分？
+        return function (y) {
+            console.log(x + y + (++tmp));
+        }
+    }
+    var fee = foo(2); // fee 形成了一个闭包
+    fee(10); //
+    fee(10); //
+    fee(10); // */
+
+
+
+    /* 
+        function foo(x) {
+            var tmp = 3;
+            return function (y) {
+                x.count = x.count ? x.count + 1 : 1;
+                console.log(x + y + tmp, x.count);
+            }
+        }
+        var age = new Number(2);
+        var bar = foo(age); //和相关作用域形成了一个闭包
+        bar(10); //输出什么？
+        bar(10); //输出什么？
+        bar(10); //输出什么？ */
+
+
+    /* function counter() {
+        var n = 0;
+        return {
+            count: function () {
+                return ++n;
+            },
+            reset: function () {
+                n = 0;
+                return n;
+            }
+        }
+    }
+    var c = counter();
+    var d = counter();
+    console.log(c.count());
+    console.log(d.count());
+    console.log(c.reset());
+    console.log(c.count());
+    console.log(d.count()); */
+
+   /*  //避免多次创建
+    function fn() {
+        var a;
+        return function () {
+            return a || (a = document.body.appendChild(document.createElement('div')));
+        }
+    };
+    var f = fn();
+    f(); */
+</script> -->
+<script>
+    /* instanceof 
+    1.判断能否由该方法创建对象
+    2.能否在原型链上找到创建该对象的原型
+    */
+
+    /* console.log(Object instanceof Function);
+    console.log(Object instanceof Object);
+    console.log(Boolean instanceof Function);
+    console.log(Boolean instanceof Object);
+    console.log(String instanceof Function);
+    console.log(String instanceof Object);
+    console.log(Number instanceof Function);
+    console.log(Number instanceof Object);
+    console.log(Function instanceof Function);
+    console.log(Function instanceof Object);
+    console.log(Array instanceof Function);
+    console.log(Array instanceof Object);
+    console.log(Date instanceof Function);
+    console.log(Date instanceof Object);
+    console.log(Math instanceof Function);//false
+    console.log(Math instanceof Object);
+    console.log(JSON instanceof Function);//false
+    console.log(JSON instanceof Object);  */
+
+    // console.log(Object.__proto__ == Function.prototype);
+
+
+
+
+    function Person(username,age){
+        this.username = username;
+        this.age = age;
+    }
+    var p = new Person("zhangsan",10);
+    console.log(p instanceof Person);
+    console.log(p.__proto__ == Person.prototype);
+// 访问器属性
+// 实现数据属性的间接访问，可实现数据的验证、过滤、运算等功能 
+    var o = {
+        _x: 1,
+        get X(){
+            return this._x;
+        },
+        set X(val){
+            this._x = val;
+        }
+    }
+    console.log(o.x,o._x);
+    o.X = 2;
+    console.log(o.x,o._x);
+</script>
+
+</html>

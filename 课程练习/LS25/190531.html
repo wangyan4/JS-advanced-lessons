@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let[a,b,c] = [12,3,4];
+    console.log(a,b,c);
+    
+
+    // let arr = a=>alert(a);   
+    // arr(Math.ceil(Math.random()*10));
+
+    let num = [1,2,3];
+    console.log(...num);
+
+    let {d,e} = {d:12,e:5};
+    console.log(d,e);
+
+    let pri= ()=>{
+        for (let index = 0; index < 5; index++) {
+            console.log(index);            
+        }
+    }
+    pri();
+
+    let num1 = new Number(5);
+    let{toString:s1} = num;
+    console.log(s1);
+
+    function move({x=0,y=0} = {}){
+        return [x,y];
+    }
+    console.log(move({x:3,y:4}));
+
+    let [x,y] = [5,4];
+    console.log(x,y);
+    x = x-y;
+    y = x+y;
+    x = y-x;
+    console.log(x,y);
+
+    let json1 = {
+        username:"zhang",
+        lessons:["高数","英语"],
+        age:20
+    }
+    let jsonStr = JSON.stringify(json1);
+    let json2 = JSON.parse(jsonStr);
+    console.log(jsonStr,json2);
+    let {username,age} = json1;
+    console.log(username,age);
+    </script>
+</html>

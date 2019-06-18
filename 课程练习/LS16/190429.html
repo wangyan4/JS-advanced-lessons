@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function BaseClass() {
+
+    }
+    BaseClass.fn1 = function () {
+        console.log("静态方法");
+    }
+    BaseClass.fn1();
+    var base = new BaseClass();
+    //base.fn1();
+
+    //封装插件
+   /*  (function (d, w) {
+        //定义一个构造函数
+        function inputIdentify(inputID) {
+            this._init(inputID);
+            this._effect();
+        }
+        //添加处理方法
+        inputIdentify.prototype._init = function (inputID) {
+            var inputObject = d.getElementById(inputID);
+            this.inputObject = inputObject;
+        }
+        inputIdentify.prototype._effect = function () {
+            this.inputObject.onblur = function () {
+                alert("失去焦点");
+            }
+            this.inputObject.onfocus = function () {
+                alert("获取焦点");
+            }
+        }
+        //将构造函数传出一遍调用
+        w.inputIdentify = inputIdentify;
+    })(document, window);
+    //实例化对象
+    var input = new inputIdentify("username"); */
+
+
+
+
+    var arr1 = [1, 2, 3, 4];
+    var arr2 = arr1;
+    arr2[0] = 'a';
+    console.log(arr1.toString());
+
+
+    //稀疏数组
+    var arr3 = [, , 3, ];
+    Array.prototype.min = function () {
+        return "最小值";
+    }
+    console.log(arr3[0]);
+    for (var i in arr3) {
+        console.log(arr3[i]);
+    }
+
+    var table = new Array(5);
+    for (var i = 0; i < table.length; ++i) {
+        table[i] = new Array(5);
+    }
+    for (var row = 0; row < table.length; ++row) {
+        for (var col = 0; col < table[row].length; ++col) {
+            table[row][col] = row * col;
+        }
+    }
+    var product = table[2][4];
+    //console.log(product);
+
+    // <0 x,y x在y之前
+    // >0 x,y x在y之后
+    // =0 x,y相对位置不变
+    var arr = [10, 20, 1, 2];
+    arr.sort(function (x, y) {
+        if (x < y) {
+            return -1;
+        }
+        if (x > y) {
+            return 1;
+        }
+        return 0;
+    }); // [1, 2, 10, 20]
+
+    
+</script>
+
+</html>

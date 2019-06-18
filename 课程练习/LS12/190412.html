@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    Object.defineProperty(obj, 'y', {
+        value: 3,
+        enumerable: true,
+        writable: true,
+        configurable: true
+    });
+    Object.getOwnPropertyDescriptor(obj,'y');
+
+    var obj1={_x:1};
+    Object.defineProperties(obj1,{
+        y:{
+            value:3,writable:true,enumerable:true
+        },
+        z:{
+            value:2,writable:true,enumerable:true
+        },
+        x:{
+            get:function(){
+                return this._x;
+            },
+            set:function(val){
+                this._x = val
+            }
+        }
+    });
+    console.log(obj1);
+    
+
+    //原型链属性
+    var o1 = {
+        x:1
+    }
+    var o2 = Object.create(o1);
+    console.log(o2.x);
+    o2.x = 2;
+    console.log(o2.x);
+    delete o2.x;
+    console.log(o2.x);
+
+    o2.__proto__.x = 3;
+    console.log(o1.x);
+    delete o2.__proto__.x;
+    console.log(o1.x);
+
+    
+</script>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var objA = {
+    //     "objName": "AAA"
+    // };
+    // var objB = {
+    //     "objName": "BBB"
+    // };
+
+    // objA.foo = function () {
+    //     console.log(this.objName);
+    // }
+    // objA.foo();
+    // objA.foo.call(objB); //apply()方法
+
+
+    // //构造方法
+    // function Person(username) {
+    //     this.username = username;
+    // }
+
+    // Person.prototype.sayHi = function () {
+    //     console.log(this.username);
+    // }
+    // var person = new Person("zhangsan");
+    // console.log(person.__proto__ === Person.prototype);
+
+    // function test() {
+    //     var str = "";
+    //     for (var i = 0; i < arguments.length; ++i) {
+    //         str += arguments[i];
+    //     }
+    //     console.log(str.toString());
+    // }
+    // test("hello", "world");
+
+
+    // var a = 2;
+
+    // function foo(x) {
+    //     x = 1;
+    //     console.log(a, x);
+    // }
+    // foo(a);
+    // console.log(a);
+
+
+    function copyObj(obj) {
+        var newObj;
+        switch (typeof (obj)) {
+            case 'object':
+                newObj = obj;
+                break;
+            case 'array':
+                newObj = [];
+                for(var i = 0;i<obj.length;++i){
+                    newObj[i] = obj[i];
+                }
+                break;
+            case 'string':
+                newObj = obj;
+                break;
+            case 'boolean':
+                newObj = obj;
+                break;
+            case 'number':
+                newObj = obj;
+                break;
+            default:
+                console.log("变量类型错误");
+
+        }
+        console.log(typeof(newObj),newObj);
+    }
+    var obj0 = {
+        username:"zhangsan"
+    }
+    var obj1 = 1;
+    copyObj(obj1);
+    // 对象 instanceof 构造函数 判断引用数据类型 typeof()判断基本数据类型
+    // 1.看这个对象能否用该构造函数实例化得到，能得到的话为true，否则为false
+    // 2.能否在对象的原型链上找到构造函数的prototype
+
+    // //构造方法
+    function Person(username) {
+        this.username = username;
+    }    
+    var person = new Person("zhangsan");
+    console.log(person instanceof Person);
+    console.log(person instanceof Object);
+    console.log(person.__proto__.__proto__);
+    console.log(Object.__proto__);
+</script>
+
+</html>

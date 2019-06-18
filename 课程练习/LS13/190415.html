@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var a = 10;
+    //     b = "Hi";
+
+    // function thisTest2() {
+    //     this.a = 20;
+    //     // delete this.b;
+    //     this.c = "新添加属性";
+    // }
+    // thisTest2();
+    // console.log(a, c);
+    // console.log(b);
+
+
+
+
+    /* var obj1 = {
+        a:1
+    }
+    var obj2 = Object.create(obj1);
+    console.log(obj2.__proto__);
+    console.log(obj2.__proto__.__proto__);
+    console.log(obj1.__proto__ == Object.prototype);
+    console.log(obj2.__proto__.__proto__.__proto__); */
+
+
+
+    /* function Person(username,age){
+        this.username = username;
+        this.age = age;
+    }
+    Person.prototype.saiHi = function(){
+        console.log(this.username);
+    }
+    var person = new Person("zhangsan",20);
+    var person1 = new Person("lisi",30);
+    console.log(person1.__proto__ == person.__proto__);
+    console.log(person.__proto__ == Person.prototype);
+    //公用saiHi()，节省空间
+    person.saiHi();
+    person1.saiHi();
+    console.log(Person.prototype == person.__proto__,
+                Person.prototype.constructor == Person,
+                Person.prototype.__proto__==Object.prototype,
+                Object.prototype.constructor == Object,
+                Object.prototype.__proto__ == null
+    ); */
+
+    var car = {
+        height:150,
+        width: 200,
+        weight:2000
+    }
+    function Car(color,seatNum){
+       this.color = color;
+       this.seatNum = seatNum;
+    }
+    Car.prototype = car;
+    // Car.prototype.height = car.height;
+    // Car.prototype.width = car.width;
+    // Car.prototype.weight = car.weight;
+
+    var smallCar = new Car('白色',5);
+    console.log(smallCar);
+
+    
+
+/* 
+1.防止变量污染
+2.防止变量非期望共享
+*/
+(function(){
+
+})();
+for(var i = 0;i<3;++i){
+    //给元素绑定事件、回调函数
+    //延迟执行，定时执行
+    (function(j){
+
+    })(i);
+
+}
+/* 
+    闭包 javascript存在的代码运行机制
+        外层函数fn1、内层函数fn2
+*/
+function fn1(){
+    var x = 1;
+    function fn2(){
+        ++x;
+    }
+    return fn2;
+}
+var result = fn1();
+result();
+result();
+</script>
+
+</html>

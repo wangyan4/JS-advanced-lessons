@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    console.log(a);
+    if (true) {
+        var a = 1;
+    }
+    console.log(a);
+
+
+    //只会提升变量不能提升函数
+    console.log(foo);
+    var foo = function () {
+        console.log("hello world");
+    }
+    foo();
+
+
+    AA();
+
+    function AA() {
+        console.log('A1');
+    }
+    var AA = function () {
+        console.log('A2');
+    }
+    AA();
+
+
+    var a = 1;
+
+    function fn1() {
+        console.log(a);
+        var b = 2;
+        var c = 3;
+
+        function fn2() {
+            var c = 30; //c = 30; /var c = 30;
+            var d = 4;
+            console.log(c);
+        }
+        fn2();
+        console.log(c);
+        console.log(d);
+    }
+    //只和定义有关，和调用无关
+    //new Function访问全局变量
+    var username = 'jack';
+
+    function foo() {
+        username = 'bilibili';
+        console.log(username);
+    }
+
+    function bar() {
+        var username = 'mike';
+        foo();
+        console.log(username);
+    }
+    bar();
+
+    //函数上下文 当执行到代码某一行时，当前作用域包含的变量，函数调用栈，this的指向
+
+
+
+
+
+    //函数对象属性之length 形参个数
+    function checkVarCount(a, b) {
+        if (checkVarCount.length !== arguments.length) {
+            alert("The count of the parameters you passed into the function doesn't match the function definition.");
+        } else {
+            alert("Successfully call the function");
+        }
+
+    }
+    checkVarCount(1, 2);
+    //Successfully call the function
+    checkVarCount(1);
+    //The count of the parameters you passed into the function doesn't match the function definition.
+
+    //函数对象属性之caller 获取调用当前函数的函数。例一
+    function test() {
+        if (test.caller == null) {
+            console.log("test is called from the toppest level");
+        } else {
+            console.log("test is called from the function:");
+            console.log(test.caller.toString());
+        }
+    }
+    //caller属性只有当函数正在执行时才被定义
+    console.log("没有调用的情况下test.caller为：", test.caller);
+    test(); //output: test is called from ,call from the top level
+
+    function testOuter() {
+        test();
+    }
+    testOuter();
+
+
+
+
+    //函数对象属性之callee 返回正被执行的 Function 对象，
+    //即指定的 Function 对象的正文
+    //callee 属性是 arguments 对象的一个成员
+    //该属性仅当相关函数正在执行时才可用。通常这个属性被用来递归调用匿名函数
+    var func = function (n) {
+        if (n <= 0)
+            return 1;
+        else
+            return n * func(n - 1);
+        //return n * arguments.callee(n - 1);
+    };
+    console.log(func(4));
+
+    //优点，可以是匿名函数
+    (function (n) {
+        if (n <= 0)
+            return 1;
+        else
+            return n * arguments.callee(n - 1);
+    }(4));
+</script>
+
+</html>
